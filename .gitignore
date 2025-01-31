@@ -172,3 +172,10 @@ cython_debug/
 
 # npyfiles
 *.npy
+*.segy
+
+# Pitctures
+*.png
+
+# files
+*.txt
