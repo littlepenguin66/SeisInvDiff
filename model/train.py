@@ -5,7 +5,9 @@ Created on 2022.3.31
 programing language:python
 @author:夜剑听雨
 """
-from model.dncnn import DnCNN
+from dncnn import DnCNN
+import sys
+sys.path.append("/root/SeisInvDiff")
 from utils.dataset import MyDataset
 from utils.SignalProcessing import batch_snr
 from torch import optim
@@ -23,8 +25,8 @@ my_net = DnCNN(1, num_of_layers=17)
 # 将网络拷贝到设备中
 my_net.to(device=device)
 # 指定特征和标签数据地址，加载数据集
-train_path_x = "..\\data\\feature\\"
-train_path_y = "..\\data\\label\\"
+train_path_x = "data/feature/"
+train_path_y = "data/label/"
 # 划分数据集，训练集：验证集：测试集 = 8:1:1
 full_dataset = MyDataset(train_path_x, train_path_y)
 valida_size = int(len(full_dataset) * 0.1)
@@ -120,7 +122,7 @@ for epoch in range(epochs):
 
     # 保存网络模型
     model_name = f'model_epoch{epoch+1}'  # 模型命名
-    torch.save(my_net, os.path.join('./save_dir', model_name+'.pth'))  # 保存整个神经网络的模型结构以及参数
+    torch.save(my_net, os.path.join('model/save_dir', model_name+'.pth'))  # 保存整个神经网络的模型结构以及参数
 
 end_time = time.strftime("1. %Y-%m-%d %H:%M:%S", time.localtime())  # 结束时间
 # 将训练花费的时间写成一个txt文档，保存到当前文件夹下
@@ -159,7 +161,7 @@ plt.plot(x1, train_line, x1, valida_line)
 plt.xlabel('epoch')
 plt.ylabel('loss')
 plt.legend(['train', 'valida'])
-plt.savefig('loss_plot.png', bbox_inches='tight')
+plt.savefig('pictures/after/loss_plot.png', bbox_inches='tight')
 plt.tight_layout()
 
 # 显示snr曲线
@@ -172,7 +174,7 @@ plt.plot(x2, De_before, x2, De_after)
 plt.xlabel('epoch')
 plt.ylabel('SNR')
 plt.legend(['noise', 'denoise'])
-plt.savefig('snr_plot.png', bbox_inches='tight')
+plt.savefig('pictures/after/snr_plot.png', bbox_inches='tight')
 plt.tight_layout()
 
 plt.show()

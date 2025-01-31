@@ -63,3 +63,4 @@ ax5.imshow(y2, cmap=plt.cm.seismic, interpolation='nearest', aspect=0.25, vmin=-
 ax6.imshow(y3, cmap=plt.cm.seismic, interpolation='nearest', aspect=0.25, vmin=-0.5, vmax=0.5)
 plt.tight_layout()  # 自动调整子图位置
 plt.show()
+plt.savefig('pictures/after/clean_noise.png')

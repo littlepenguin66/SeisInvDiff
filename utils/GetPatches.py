@@ -175,8 +175,8 @@ if __name__ == "__main__":
     # print(patch_num)
 
     # 对剥离后的数据进行切分
-    data_dir1 = "..\\data\\sgy_data\\noise\\"  # 含噪数据文件路径
-    data_dir2 = "..\\data\\sgy_data\\clean\\"  # 干净数据文件路径
+    data_dir1 = "data/sgy_data/noise/"  # 含噪数据文件路径
+    data_dir2 = "data/sgy_data/clean/"  # 干净数据文件路径
     patch_size = 64  # 数据块patch的大小
     scales = [1]     # 数据块拉伸的方式
     xs = data_generator(data_dir1, patch_size, 32, 64, scales)  # 含噪和抽稀数据patches，即特征。
@@ -198,15 +198,15 @@ if __name__ == "__main__":
         label = ys[j]
         noise_name = f'feature{j+1}'
         label_name = f'label{j+1}'
-        np.save("..\\data\\feature\\" + noise_name, feature)
-        np.save("..\\data\\label\\" + label_name, label)
+        np.save("data/feature/" + noise_name, feature)
+        np.save("data/label/" + label_name, label)
     print(f'一共保存{len(xs)}个训练集地震数据切片！')
 
     # 查看若干个切片
-    c1 = np.load('../data/feature/feature81.npy')
-    n1 = np.load('../data/label/label81.npy')
-    c2 = np.load('../data/feature/feature1.npy')
-    n2 = np.load('../data/label/label1.npy')
+    c1 = np.load('data/feature/feature81.npy')
+    n1 = np.load('data/label/label81.npy')
+    c2 = np.load('data/feature/feature1.npy')
+    n2 = np.load('data/label/label1.npy')
     fig1 = plt.figure()
     # 三个参数分别为：行数，列数，
     ax1 = fig1.add_subplot(2, 2, 1)
