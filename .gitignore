@@ -180,6 +180,7 @@ cython_debug/
 
 # files
 *.txt
+prompt_output.md
 
 # Pth
 *.pth
