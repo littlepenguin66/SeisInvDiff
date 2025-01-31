@@ -184,3 +184,6 @@ prompt_output.md
 
 # Pth
 *.pth
+
+# excute files
+template/code2prompt
