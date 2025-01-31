@@ -172,6 +172,7 @@ cython_debug/
 
 # npyfiles
 *.npy
+*.sgy
 *.segy
 
 # Pitctures
